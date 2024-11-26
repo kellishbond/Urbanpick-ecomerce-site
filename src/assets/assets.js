@@ -76,10 +76,16 @@ import cross_icon from './cross_icon.png'
 import urban_logo from './urban_logo.png'
 import heropic from './heropic.jpg'
 import logoo from './logoo.png'
+import abb from './abb.jpg'
+import cont from './cont.jpg'
+
+
 
 
 export const assets = {
     logo,
+    abb,
+    cont,
     urban_logo,
     heropic,
     logoo,
