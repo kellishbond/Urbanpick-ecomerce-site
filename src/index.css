@@ -26,6 +26,7 @@ a.active hr{
     }
   }
 
+  /* transitions */
   @keyframes slideInLeft {
     from {
       opacity: 0;
