@@ -1,21 +1,25 @@
-import React, { useContext, useEffect, useState } from 'react'; // Added useState import
+import React, { useContext, useEffect, useState } from 'react';
 import { ShopContext } from '../context/Shopcontext';
 import Title from './Title';
 import ProductItem from './ProductItem';
 
 const RelatedProducts = ({ category, subCategory }) => {
   const { products } = useContext(ShopContext);
-  const [related, setRelated] = useState([]); // Ensure useState is imported
+  const [related, setRelated] = useState([]);
 
   useEffect(() => {
     if (products.length > 0) {
-      // Filter related products by category and subCategory
       const relatedProducts = products
         .filter((item) => item.category === category && item.subCategory === subCategory)
         .slice(0, 5); // Limit to 5 products
-      setRelated(relatedProducts); // Update related state
+      setRelated(relatedProducts);
     }
-  }, [products, category, subCategory]); // Correct dependency array
+  }, [products, category, subCategory]);
+
+  // Function to scroll to the top of the page
+  const handleScrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <div className="my-24">
@@ -26,13 +30,14 @@ const RelatedProducts = ({ category, subCategory }) => {
       {/* Related Products Grid */}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 gap-y-6">
         {related.map((item) => (
-          <ProductItem
-            key={item._id} // Use unique key for each item
-            id={item._id}
-            name={item.name}
-            price={item.price}
-            image={item.image}
-          />
+          <div key={item._id} onClick={handleScrollToTop} className="cursor-pointer">
+            <ProductItem
+              id={item._id}
+              name={item.name}
+              price={item.price}
+              image={item.image}
+            />
+          </div>
         ))}
       </div>
     </div>
@@ -40,7 +45,6 @@ const RelatedProducts = ({ category, subCategory }) => {
 };
 
 export default RelatedProducts;
-
 
 
 
