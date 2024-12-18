@@ -1,4 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { ShopContext } from "../context/Shopcontext";
 import Title from "../components/Title";
 import { assets } from "../assets/assets";
@@ -27,8 +29,29 @@ const Cart = () => {
     }
   }, [cartItems, products]);
 
+  const handleRemoveItem = (itemId, itemSize) => {
+    // Get the product name before removing
+    const productData = products.find((product) => product._id === itemId);
+    
+    // Remove the item
+    updateQuantity(itemId, itemSize, 0);
+    
+    // Show toast notification
+    toast.error(`item removed from cart`, {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    });
+  };
+
   return (
     <div className="boder-t pt-14">
+      {/* Toast Container */}
+      <ToastContainer />
+
       <div className="text-2xl mb-3">
         <Title text1={"YOUR"} text2={"CART"} />
       </div>
@@ -80,7 +103,7 @@ const Cart = () => {
                 defaultValue={item.quantity}
               />
               <img
-                onClick={() => updateQuantity(item._id, item.size, 0)}
+                onClick={() => handleRemoveItem(item._id, item.size)}
                 src={assets.bin_icon}
                 className="w-4 mr-4 sm:w-5 cursor-pointer"
                 alt=""
