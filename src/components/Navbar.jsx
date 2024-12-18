@@ -49,12 +49,14 @@ const Navbar = () => {
 
       {/* Right-side icons */}
       <div className="flex items-center gap-6">
+        <Link to="/collection">
         <img
           onClick={() => SetShowSearch(true)}
           src={assets.search_icon}
           className="w-5 cursor-pointer"
           alt="Search Icon"
         />
+        </Link>
 
         {/* Profile Dropdown */}
         <div className="relative group">

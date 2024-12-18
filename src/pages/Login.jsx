@@ -186,6 +186,7 @@ const Login = () => {
       <button className='bg-black text-white font-light px-8 py-2 mt-4' disabled={loading}>
         {loading ? 'Processing...' : currentState === 'Login' ? 'Sign In' : 'Sign up'}
       </button>
+      <br /><br /><br /><br /><br />
     </form>
   );
 };
