@@ -589,7 +589,7 @@ const Collection = () => {
           <div className="bg-white rounded-2xl shadow-md p-6">
             <p className="mb-3 text-sm font-medium text-gray-900">CATEGORIES</p>
             <div className="flex flex-col gap-2 text-sm font-light text-gray-700">
-              {["Men", "Women", "Kids"].map((cat) => (
+              {["Men", "women", "kids"].map((cat) => (
                 <p key={cat} className="flex gap-2">
                   <input
                     className="w-3"
